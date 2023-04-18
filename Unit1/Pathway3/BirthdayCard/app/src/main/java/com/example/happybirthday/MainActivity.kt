@@ -1,18 +1,4 @@
-/*
- * Copyright (C) 2022 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 package com.example.happybirthday
 
 import android.os.Bundle
@@ -38,23 +24,40 @@ import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            HappyBirthdayTheme {
+                // surface 컴포저블 : 화면 전체를 차지하는 박스 생성.
+                Surface(
+                    modifier = Modifier.fillMaxSize(), // 사용 가능한 최대 공간 차지
+                    color = MaterialTheme.colors.background
+                ) {
+                    // BirthdayGreetingWithText 컴포저블을 통해 생일 축하 메시지, 축하 인사 표시.
+                    BirthdayGreetingWithText( message = "Happy Birthday Sam!", from = "- from Sangik")
+                }
+            }
+        }
     }
 }
-
-// 7. 텍스트 정렬 및 패딩 추가
+// 세로 방향 정렬
 @Composable
-fun BirthdayGreetingWithText(message: String, from: String) {
-    // Create a column so that texts don't overlap
-    Column { }
+fun BirthdayGreetingWithText(message: String, from: String, modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        Text(
+            text = message,
+            fontSize = 36.sp,
+        )
+        Text(
+            text = from,
+            fontSize = 24.sp,
+        )
+    }
 }
-
-// 5. Box 레이아웃 추
+// 미리보기
+@Preview(showBackground = true)
 @Composable
-fun BirthdayGreetingWithImage(message: String, from: String) { }
-
-// 4. 이미지 컴포저블 추가
-@Preview(showBackground = false)
-@Composable
-private fun BirthdayCardPreview() { }
+fun BirthdayCardPreview() {
+    HappyBirthdayTheme {
+        BirthdayGreetingWithText(message = "Happy Birthday Sam!", from ="- He~~llo SangIk")
+    }
+}
 
