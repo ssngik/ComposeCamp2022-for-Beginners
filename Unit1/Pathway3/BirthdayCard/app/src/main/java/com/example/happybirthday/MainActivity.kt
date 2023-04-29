@@ -56,10 +56,13 @@ fun BirthdayGreetingWithText(message: String, from: String, modifier: Modifier =
 @Composable
 fun BirthdayGreetingWithImage(message: String, from: String, modifier: Modifier = Modifier) {
     val image = painterResource(id = R.drawable.androidparty)
-    Image(
-        painter = image,
-        contentDescription = null
-    )
+    Box {
+        Image(
+            painter = image,
+            contentDescription = null
+        )
+        BirthdayGreetingWithText(message = message, from = from)
+    }
 }
 
 // 미리보기
