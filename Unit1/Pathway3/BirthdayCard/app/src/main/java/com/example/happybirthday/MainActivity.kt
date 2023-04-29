@@ -52,22 +52,12 @@ fun BirthdayGreetingWithText(message: String, from: String, modifier: Modifier =
         )
     }
 }
-
-@Composable
-fun BirthdayGreetingWithImage(message: String, from: String, modifier: Modifier = Modifier) {
-    val image = painterResource(id = R.drawable.androidparty)
-    Image(
-        painter = image,
-        contentDescription = null
-    )
-}
-
 // 미리보기
-@Preview(showBackground = false)
+@Preview(showBackground = true)
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithImage("Happy Birthday Sam!", "- from SangIk")
+        BirthdayGreetingWithText(message = "Happy Birthday Sam!", from ="- He~~llo SangIk")
     }
 }
 
