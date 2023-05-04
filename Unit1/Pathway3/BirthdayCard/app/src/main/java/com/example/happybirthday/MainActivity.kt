@@ -53,13 +53,16 @@ fun BirthdayGreetingWithText(message: String, from: String, modifier: Modifier =
     }
 }
 
+// modifier : Jetpack Compose UI 요소를 장식하거나 이 요소에 동작을 추가하는 데 사용
+// 예를 들어 행이나 텍스트, 버튼에 배경이나 패딩, 동작을 추가할 수 있습니다. 이를 설정하려면 컴포저블이나 레이아웃에서 수정자를 매개변수로 허용해야 합니다.
 @Composable
 fun BirthdayGreetingWithImage(message: String, from: String, modifier: Modifier = Modifier) {
     val image = painterResource(id = R.drawable.androidparty)
     Box {
         Image(
             painter = image,
-            contentDescription = null
+            contentDescription = null,
+            contentScale = ContentScale.Crop
         )
         BirthdayGreetingWithText(message = message, from = from)
     }
