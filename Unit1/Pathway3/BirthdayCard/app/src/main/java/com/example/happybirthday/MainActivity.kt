@@ -31,7 +31,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(), // 사용 가능한 최대 공간 차지
                     color = MaterialTheme.colors.background
                 ) {
-                    // BirthdayGreetingWithText 컴포저블을 통해 생일 축하 메시지, 축하 인사 표시.
                     BirthdayGreetingWithImage( message = "Happy Birthday Sam!", from = "- from Sangik")
                 }
             }
@@ -41,14 +40,23 @@ class MainActivity : ComponentActivity() {
 // 세로 방향 정렬
 @Composable
 fun BirthdayGreetingWithText(message: String, from: String, modifier: Modifier = Modifier) {
-    Column(modifier = modifier) {
+    Column(modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
+
+
+    ) {
         Text(
             text = message,
             fontSize = 36.sp,
+            modifier = Modifier
+                .padding(top = 16.dp)
         )
         Text(
             text = from,
             fontSize = 24.sp,
+            modifier = Modifier
+                .padding(top = 16.dp)
         )
     }
 }
@@ -73,7 +81,8 @@ fun BirthdayGreetingWithImage(message: String, from: String, modifier: Modifier 
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithImage("Happy Birthday Sam!", "- from SangIk")
+        BirthdayGreetingWithImage(stringResource(R.string.happy_birthday_text),
+                                                stringResource(R.string.signature_text))
     }
 }
 
