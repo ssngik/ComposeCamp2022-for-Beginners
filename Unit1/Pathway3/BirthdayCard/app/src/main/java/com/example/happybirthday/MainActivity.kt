@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     // BirthdayGreetingWithText 컴포저블을 통해 생일 축하 메시지, 축하 인사 표시.
-                    BirthdayGreetingWithText( message = "Happy Birthday Sam!", from = "- from Sangik")
+                    BirthdayGreetingWithImage( message = "Happy Birthday Sam!", from = "- from Sangik")
                 }
             }
         }
